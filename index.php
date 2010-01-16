@@ -1,42 +1,30 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"> 
-<head profile="http://gmpg.org/xfn/11"> 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-	<title>Solid Sushi</title> 
- 
-	<!-- Favicon --> 
-	<link rel="icon" type="image/png" href="/images/favicon.png" /> 
- 
-	<!-- stylesheets --> 
-	<link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" /> 
-</head>
-<body>
+<? include("header.php") ?>
 
-	<div id="container">
+<div id="container">
 		
-	<h1>Widget Corporation Interview Questions</h1>
+	<h1>Widget Corporation(tm) Interview Questions</h1>
 	
 	<p>Thank you for your interest in <strong>Widget Corporation</strong> please answer 
 	the following questions as honestly as possibly</p>
 		
 	
-	<form>
+	<form method="post" action="process.php">
+
+		<!-- Some questions are hard-wired -->
+		<label class="header">Name</label>
+		<input class="text" name="name" type="text"/>
+		
+		<label class="header">Email</label>
+		<input class="text" name="email" type="text"/>
 		
 <?
-	include("database_helper.php");
-	
-	//connect to our database
-	//parse through the questions
-	
-	
-	printQuestions();
-
+		include("database_helper.php");
+		printQuestions();
 ?>	
 	
-	
-	<input type="submit" value="Submit" />
+	<input type="submit" class="submit" value="Submit" />
 	
 	</form>
-	</div>
+</div>
 	
-</body>
+</html></body>

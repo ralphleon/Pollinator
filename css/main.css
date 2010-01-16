@@ -1,0 +1,28 @@
+body {
+	background:#222;	
+	font:14px Georgia;
+}
+
+label.header{
+	font:16px Georgia;
+	display:block;
+	margin:15px 0 4px 0;
+}
+input.submit{
+	float:right;
+}
+
+input.text{ 
+	width:200px;
+}
+
+form{
+	padding-bottom:20px;
+}
+
+#container{
+	width:500px;
+	margin: 10px 50px 10px 50px;
+	padding:30px;
+	background:#CCC;	
+}
