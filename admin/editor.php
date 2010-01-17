@@ -1,44 +1,54 @@
 <? include("../header.php") ?>
 
+<script type="text/javascript" src="/questionator/js/jquery.js"></script>	 	
+<script type="text/javascript" src="/questionator/js/editor.js"></script> 
+
 <div id="container">
 	
 	<h1>Administration</h1>
 	
-	<!--<form> 	
-		<div class="question">		
-			<div class="main">
-				<label>Question <span class="small">The main question</span></label>
+	<form id="editForm" action=""> 
+		
+		<div id="questionsBlock">
 			
-				<textarea name="content"> </textarea>
-			
-				<label>Type<span class="small">Type of the question</span></label>
-				<select name="type">
-					<option>Free text</option>
-					<option>Yes / No </option>
-					<option>List (select one)</option>
-					<option>List (select any)</option>
-				</select>
+			<!-- Sample Question -->
+			<div class="question" style="display:none">		
+				<div class="main">
+					<label>Question <span class="small">The main question</span></label>
+
+					<textarea name="content"></textarea>
+
+					<label>Type<span class="small">Type of the question</span></label>
+					<select name="type">
+
+						<option value="0" selected="true">Free text</option>";
+						<option value="1">Yes / No </option>";
+						<option value="2">List (select any)</option>";
+						<option value="3">List (select one)</option>";
+					</select>
+				</div>
+
+				<div class="opts" style="display:none">
+					<label>List<span class="small">Newline separated</span></label>
+					<textarea name="opts"></textarea>
+				</div>
+
+				<div class="delete">
+					<a href="#">Delete</a>
+				</div>	
 			</div>
 			
-			<div class="opts">
-				<label>List<span class="small">Newline separated</span></label>
-				<textarea name="opts"> </textarea>
-			</div>
-					
-			<div class="delete">
-				<a href="">Delete</a>
-			</div>	
+		<? 	
+			include("editor_helper.php");
+			printQuestionsEditor();
+		?>
 		</div>
-	
-	</form>-->
-	
-	<?
-	
-	include("editor_helper.php");
-	printQuestionsEditor();
-	
-	
-	?>
+		
+		<div id="controls">
+			<input id="add" type="button" value="Add">
+			<input id="submit" type="button" value="submit"/>
+		</div>
+	</form>
 	
 </div>
-</html></body>
+</body>

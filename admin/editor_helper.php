@@ -20,16 +20,19 @@
 		$type = $row['type'];
 		$opts = $row['opts'];
 		
+		$hideOpts = "style=\"display:none;\"";
+		
+		if($type == Q_MULTI || $type == Q_MULTI_EXC) $hideOpts= "";
+		
 		print <<< EOF
-		<form> 	
-			<div class="question">		
-				<div class="main">
-					<label>Question <span class="small">The main question</span></label>
+	<div class="question">		
+		<div class="main">
+			<label>Question <span class="small">The main question</span></label>
 
-					<textarea name="content">$content</textarea>
+			<textarea name="content">$content</textarea>
 
-					<label>Type<span class="small">Type of the question</span></label>
-					<select name="type">
+			<label>Type<span class="small">Type of the question</span></label>
+			<select name="type">
 EOF;
 
 		// This should obviously be a list, ugly code
@@ -46,20 +49,18 @@ EOF;
 		else print "<option value=\"3\" selected=\"true\">List (select one)</option>";
 	
 		print <<< EOF
-					</select>
-				</div>
+			</select>
+		</div>
 
-				<div class="opts">
-					<label>List<span class="small">Newline separated</span></label>
-					<textarea name="opts">$opts</textarea>
-				</div>
+		<div class="opts" $hideOpts>
+			<label>List<span class="small">Newline separated</span></label>
+			<textarea name="opts">$opts</textarea>
+		</div>
 
-				<div class="delete">
-					<a href="">Delete</a>
-				</div>	
-			</div>
-
-		</form>
+		<div class="delete">
+			<a href="#">Delete</a>
+		</div>	
+	</div>
 EOF;
 	}
 

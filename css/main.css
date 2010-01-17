@@ -24,12 +24,13 @@ form{
 	width:500px;
 	margin: 10px 50px 10px 50px;
 	padding:30px;
-	background:#CCC;	
+	background:#DDD;	
 }
 
 /* Admin section */
 div.question {
 	margin:10px;
+	margin-top:40px;
 }
 
 div.question div.main{	
