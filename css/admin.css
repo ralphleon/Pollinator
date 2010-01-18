@@ -1,0 +1,98 @@
+
+/* Table view */
+#tableHolder {
+	overflow: scroll;
+	width:600px;
+}
+
+table.admin {
+	border-collapse: collapse;
+}
+
+table.admin thead tr {
+	padding:3px;
+	margin:3px;
+	border-bottom:2px solid #666;
+	font-weight:bold;
+}
+
+table.admin tbody tr {
+	padding:3px;
+	margin:3px;
+	border-bottom:1px solid #666;
+}
+
+table.admin td { 
+	padding:5px;
+}
+
+/* Editor controls */
+#controls{
+	clear:both;
+	margin-top:20px;
+	float:right;
+}
+
+div.question {
+	margin:10px;
+	margin-top:40px;
+}
+
+div.question div.main{	
+	background-color: #AAA;
+	padding:10px;
+	overflow: auto;
+}
+
+div.question div.opts {	
+	background-color: #999;
+	padding:10px;
+	clear:both;
+	overflow: auto;
+}
+
+div.question label {
+	color:#333;
+	display:block;
+	text-align:right;
+	width:140px;
+	float:left;
+}
+div.question .small {
+	color:#444;
+	display:block;
+	font-size:11px;
+	font-weight:normal;
+	text-align:right;
+	width:140px;
+}
+div.question input,textarea,select{
+	float:left;
+	font-size:12px;
+	padding:4px 2px;
+	border:solid 1px #aacfe4;
+	width:200px;
+	margin:2px 0 20px 10px;
+}
+
+div.question textarea{
+	width:60%;
+}
+div.question div.delete {
+	display:inline;
+	float:right;
+	margin-right:5px;	
+	background:#FF6666;
+	clear:both;
+	padding:5px 10px 5px 10px;
+}
+
+div.question div.delete:hover {
+	background:#FF3333;	
+}
+
+div.delete a{
+	font-family:sans-serif;
+	color:#FFF;
+	text-decoration:none;
+}

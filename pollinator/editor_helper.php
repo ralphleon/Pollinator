@@ -1,5 +1,5 @@
 <?
-	include("../database_helper.php");
+	include("database_helper.php");
 
 	function printQuestionsEditor(){
 		

@@ -1,57 +1,28 @@
 <?
-
-// Constants
-define("DATABASE", "questionator");
-define("QUESTIONS_TABLE" , "questions" );
-define("RESULTS_TABLE" , "results");
-
-// Differnt values for the question types
-define('Q_YES_NO',0);
-define('Q_MULTI',1);
-define('Q_TEXT',2);
-define('Q_MULTI_EXC',3);
-
-function connect(){
+include("database_helper.php");
 	
-	$link = mysql_connect('localhost', 'root', 'root');
-	
-	if(!$link) err("failure connecting to database...");
-		
- 	if(!@mysql_select_db(DATABASE,$link)){
-		err("failure selecting the database <strong>" . DATABASE . "</strong>...");
-	}
-
-	return $link;
-}
-
-function err($string){
-	
-	print "Error: " . $string . "<br/>";
-	print "MySQL says: \"" . mysql_error() . "\"";
-	exit();
-}
-
 /**
-	Prints all questions stored in the Mysql database
-*/
+ *	Prints all questions stored in the Mysql database
+ */
 function printQuestions(){
 	
 	$link = connect();
 	
 	$q = "SELECT * FROM ". QUESTIONS_TABLE;
-	$result = mysql_query($q);
-	if (!$result) err("error with query...\n Query=$q");
+	$result = mysql_query($q) or mysql_err($q);
 	
 	while ( $row = mysql_fetch_array($result) ) {
 	  	printQuestion($row);
 	}
+	
+	disconnect();
 }
 
 /**
-	Takes an array that has "type","content", and "opts" defined and prints
-	an html form element based on these values. This array is normally a row from
-	the QUESTIONS_TABLE mysql table.
-**/
+ *	Takes an array that has "type","content", and "opts" defined and prints
+ *	an html form element based on these values. This array is normally a row from
+ *	the QUESTIONS_TABLE mysql table.
+ */
 function printQuestion($row){
 	
 	// All the questions have the same sort of title
@@ -64,8 +35,8 @@ function printQuestion($row){
 	switch($row["type"])
 	{
 		case Q_YES_NO:
-			print '<input value="yes" type="radio" name="' . $name . '"><label>Yes</label><br/>';
-			print '<input value="no"  type="radio" name="' . $name . '"><label>No</label><br/>';
+			printf('<input class="validate[required] radio" value="yes" type="radio" id="%s" name="%s"><label>Yes</label><br/>',$name,$name);
+			printf('<input class="validate[required] radio" value="no"  type="radio" id="%s" name="%s"><label>No</label><br/>',$name,$name);
 		break;
 		
 		case Q_MULTI:
@@ -84,29 +55,25 @@ function printQuestion($row){
 			$opts = explode( "," , $row['opts']);
 
 			foreach($opts as $opt){
-				print '<input value="' . $opt .'" type="radio" name="' . $name .'"/>';
+				printf('<input class="validate[required] radio" value="%s" type="radio" id="%s" name="%s"/>',$opt,$name,$name);
 				print "<label>$opt</label><br/>";				
 			}
-
 		break;
 		
 		case Q_TEXT:		
-			print '<input type="text" name="' . $name . '"/>';
+			printf('<input class="validate[required,length[1,100]] text-input" type="text" id="%s" name="%s"/>',$name,$name);
 		break;
 	}
 	
 	print "</div>\n";
 }
 
-/** Process Questions
-*/
-function processResults()
-{
-	// We can grab the name and email first, because they're not dynamic questions
-	$name = $_POST['name'];
-	$email = $_POST['email'];
+/** 
+ * Process Questions
+ */
+function processResults(){
 	
-	print "<p>Thanks for your interest in Widget Corporation, $name. We'll be in touch shortly!</p>";
+	print "<p>Thanks for your interest in Widget Corporation. We'll be in touch shortly!</p>";
 	
 	$link = connect();
 	
@@ -153,20 +120,20 @@ function processResults()
 		$qResults[$name] = $r;
 		
 	} // end while
-		
-	// Insert a new record with the name and email filled in
-	$cols = "name,email";
-	$values = "'$name','$email'";
 			
+	$cols = ""; $values = "";
+	
 	foreach($qResults as $key => $val) {
-	    $cols = $cols . "," . $key;
-		$values = $values . ",'" . $val . "'";
+	    $cols = $cols . $key . ",";
+		$values = $values . "'" . $val . "'" . ",";
 	}
+	
+	$cols = rtrim($cols,",");
+	$values = rtrim($values,",");
 
 	$q = "INSERT into " . RESULTS_TABLE . " ($cols) VALUES($values)";
 	$result = mysql_query($q);
 	if (!$result) err("error with query...\n Query=$q");
 	
 }
-
 ?>

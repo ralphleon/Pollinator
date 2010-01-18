@@ -9,6 +9,8 @@
  
 	<!-- stylesheets --> 
 	<link rel="stylesheet" href="/questionator/css/main.css" type="text/css" media="screen" /> 
+	<link rel="stylesheet" href="/questionator/css/boxy.css" type="text/css" media="screen" /> 
+	<link rel="stylesheet" href="/questionator/css/admin.css" type="text/css" media="screen" /> 
 </head>
 <body>
 	

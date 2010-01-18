@@ -1,13 +1,14 @@
-<? include("../header.php") ?>
+<? include("header.php") ?>
 
 <script type="text/javascript" src="/questionator/js/jquery.js"></script>	 	
 <script type="text/javascript" src="/questionator/js/editor.js"></script> 
+<script type="text/javascript" src="/questionator/js/jquery.boxy.js"></script> 
 
 <div id="container">
 	
 	<h1>Administration</h1>
 	
-	<form id="editForm" action=""> 
+	<form class="boxy" id="editForm" action=""> 
 		
 		<div id="questionsBlock">
 			
@@ -39,7 +40,7 @@
 			</div>
 			
 		<? 	
-			include("editor_helper.php");
+			include("../pollinator/editor_helper.php");
 			printQuestionsEditor();
 		?>
 		</div>

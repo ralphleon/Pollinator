@@ -4,7 +4,7 @@
 		
 	<h1>Thank You!</h1>
 <?
-		include("database_helper.php");				
+		include("pollinator/question_viewer.php");				
 		// Process the results
 		processResults();
 ?>		

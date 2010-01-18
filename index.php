@@ -1,4 +1,8 @@
-<? include("header.php") ?>
+<? include("header.php")  ?>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.validationEngine-en.js" type="text/javascript"></script>
+<script src="js/jquery.validationEngine.js" type="text/javascript"></script>
 
 <div id="container">
 		
@@ -6,21 +10,21 @@
 	
 	<p>Thank you for your interest in <strong>Widget Corporation</strong> please answer 
 	the following questions as honestly as possibly</p>
-		
 	
-	<form method="post" action="process.php">
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+ 		
+	<script>
+	$(document).ready(function() {
+		$("#questionsForm").validationEngine();
+	});
+	</script>
 
-		<!-- Some questions are hard-wired -->
-		<label class="header">Name</label>
-		<input class="text" name="name" type="text"/>
+	<form id="questionsForm" method="post" action="process.php">
 		
-		<label class="header">Email</label>
-		<input class="text" name="email" type="text"/>
-		
-<?
-		include("database_helper.php");
+	<?
+		include("pollinator/question_viewer.php");
 		printQuestions();
-?>	
+	?>	
 	
 	<input type="submit" class="submit" value="Submit" />
 	

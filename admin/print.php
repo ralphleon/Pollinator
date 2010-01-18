@@ -2,17 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"> 
 <head profile="http://gmpg.org/xfn/11"> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-	<title>Widget Corporation(tm) Interview</title> 
- 
-	<!-- Favicon --> 
-	<link rel="icon" type="image/png" href="/images/favicon.png" /> 
- 
+	<title>Widget Corporation(tm) Review - Printer Friendly</title> 
+
 	<!-- stylesheets --> 
-	<link rel="stylesheet" href="/questionator/css/main.css" type="text/css" media="screen" /> 
+	<link rel="stylesheet" href="/questionator/css/admin.css" type="text/css" media="screen" /> 
+	<style>
+	table.admin {
+		width:auto;
+		height:auto;
+	}
+	</style>
 </head>
 <body>
-	
+
 <?
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
+	include("../pollinator/admin_helper.php");
+	printResultsTable();
 ?>
+
+</body></html>
