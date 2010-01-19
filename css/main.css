@@ -26,4 +26,38 @@ form{
 	padding:30px;
 	background:#EEE;
 	overflow: auto;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+}
+
+#header span {
+	overflow:auto;
+	float:left;
+	margin-left:10px;
+}
+
+#header h1{ 
+	color:#333;
+	font-size:180%;
+	padding-top:5px;
+	margin-bottom:0;
+	}
+	
+#header h2 { 
+	display:inline;
+	color:#444;
+	font-size:150%;
+	margin-top:20px;
+}
+	
+#header img{
+	display:inline;
+	float:left;
+	height:90px;
+	width:90px;
+}
+
+#header { 
+	overflow:auto;
+	clear:both;
 }

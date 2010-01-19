@@ -1,13 +1,12 @@
-<? include("header.php") ?>
-	
-<div id="container">
+<? 
+	$title = "results";
+	include("header.php") ?>
 		
-	<h1>Thank You!</h1>
+<p>Thanks for filling out the poll! We'll get back to you shortly. Below are your responses:</p>
 <?
 		include("pollinator/question_viewer.php");				
 		// Process the results
 		processResults();
 ?>		
 
-</div>
-</html></body>
+<? include("footer.php"); ?>

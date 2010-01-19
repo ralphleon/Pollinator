@@ -1,12 +1,8 @@
-<? include("header.php") ?>
+<? $title = "Question Editor"; include("../header.php") ?>
 
 <script type="text/javascript" src="/questionator/js/jquery.js"></script>	 	
 <script type="text/javascript" src="/questionator/js/editor.js"></script> 
 <script type="text/javascript" src="/questionator/js/jquery.boxy.js"></script> 
-
-<div id="container">
-	
-	<h1>Administration</h1>
 	
 	<form class="boxy" id="editForm" action=""> 
 		
@@ -51,5 +47,4 @@
 		</div>
 	</form>
 	
-</div>
-</body>
+<? include("../footer.php");?>

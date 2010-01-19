@@ -73,14 +73,11 @@ function printQuestion($row){
  */
 function processResults(){
 	
-	print "<p>Thanks for your interest in Widget Corporation. We'll be in touch shortly!</p>";
-	
-	$link = connect();
+	connect();
 	
 	// Loop through the dynamic fields
 	$q = "SELECT * FROM ". QUESTIONS_TABLE;
-	$result = mysql_query($q);
-	if (!$result) err("error with query...\n Query=$q");
+	$result = mysql_query($q) or mysql_err($q);
 	
 	// store the column names, and their answers
 	$qResults = Array();
@@ -108,10 +105,9 @@ function processResults(){
 			break;
 		
 			// everything else can use a standard case
-			default:
-			
+			default:			
 				// try to gather the result for the question
-				$r = $_POST[$name];
+				$r = mysql_real_escape_string($_POST[$name]);
 			break;
 		}
 		
@@ -131,9 +127,11 @@ function processResults(){
 	$cols = rtrim($cols,",");
 	$values = rtrim($values,",");
 
-	$q = "INSERT into " . RESULTS_TABLE . " ($cols) VALUES($values)";
-	$result = mysql_query($q);
-	if (!$result) err("error with query...\n Query=$q");
-	
+	// Gaurd against SQL injection atttacks
+	$q = sprintf("INSERT into %s (%s) VALUES(%s)", RESULTS_TABLE,$cols,$values);
+			
+	$result = mysql_query($q) or mysql_err($q);
+
+	disconnect();
 }
 ?>
