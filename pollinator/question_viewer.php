@@ -9,7 +9,7 @@ function printQuestions(){
 	$link = connect();
 	
 	$q = "SELECT * FROM ". QUESTIONS_TABLE;
-	$result = mysql_query($q) or mysql_err($q);
+	$result = mysql_query($q) or err("No database configured yet, please use the admin interface!");
 	
 	while ( $row = mysql_fetch_array($result) ) {
 	  	printQuestion($row);

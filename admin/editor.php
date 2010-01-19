@@ -8,7 +8,7 @@
 		
 		<div id="questionsBlock">
 			
-			<!-- Sample Question -->
+			<!-- Sample Question, cloned in js -->
 			<div class="question" style="display:none">		
 				<div class="main">
 					<label>Question <span class="small">The main question</span></label>
