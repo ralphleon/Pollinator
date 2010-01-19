@@ -1,6 +1,5 @@
 <?
-	/** Simple helper script to setupt the databases, could allow usernames, etc later */
-	
+	/** Simple helper script to setup the databases, could allow usernames, etc later */
 	include("database_helper.php");
 	connect();
 	

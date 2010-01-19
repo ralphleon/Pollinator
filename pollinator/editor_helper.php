@@ -1,19 +1,26 @@
 <?
 	include("database_helper.php");
 
+	/**
+	 * Prints out the questions editor, with all of the databases's 
+	 * current data loaded into it.
+	 */
 	function printQuestionsEditor(){
 		
 		$link = connect();
 		
 		$q = "SELECT * FROM ". QUESTIONS_TABLE;
-		$result = mysql_query($q);
-		if (!$result) err("error with query...\n Query=$q");
+		$result = mysql_query($q) or mysql_err($q);
 
 		while ( $row = mysql_fetch_array($result) ) {
 		  	printEditor($row);
 		}
 	}
 	
+	/** 
+	 * Prints an individual editor, for the $row give. The row should be a key-value pair
+	 * from the questions mysql database.
+	 */
 	function printEditor($row){
 		
 		$content = $row['content'];

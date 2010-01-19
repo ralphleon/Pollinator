@@ -1,10 +1,10 @@
 <?
 	/** 
-		Callback code for the editor AJAX. This code takes the edited questions
-		and adds them to the questions table. Currently it drops the entire
-		results table (lazy) to avoid conflicts and refactoring. This could be added 
-		later by using hash values instead of question #.
-	*/
+	 *	Callback code for the editor AJAX. This code takes the edited questions
+	 *	and adds them to the questions table. Currently it drops the entire
+	 *	results table (lazy) to avoid conflicts and refactoring. This could be added 
+	 *	later by using hash values instead of question #.
+	 */
 	
 	include("database_helper.php");
 	
@@ -13,15 +13,15 @@
 	print_r($data);	
 	connect();
 	
-	// Dump all questions besides for the 2 key questions (name,email)
+	// Dump all questions, add the new questions to a sql query string
 	$q = "TRUNCATE TABLE " . QUESTIONS_TABLE;
 	$result = mysql_query($q) or mysql_err($q);
 	
 	$questions_sql = ""; $i = 0;
 	
 	foreach($data as $question){
-		$content = $question["content"];
-		$opts = $question["opts"];
+		$content = mysql_real_escape_string($question["content"]);
+		$opts = mysql_real_escape_string($question["opts"]);
 		$type = $question["type"];
 		
 		$q = "INSERT into " . QUESTIONS_TABLE . "(type,content,opts) VALUES('$type','$content','$opts')";
@@ -29,7 +29,6 @@
 		
 		$questions_sql = $questions_sql . ",question" . ++$i . " TEXT";	
 	}
-	// insert new records for each query
 	
 	// Make a mysql CREATE TABLE query for the results table
 	$q = "DROP TABLE IF EXISTS " . RESULTS_TABLE;
@@ -42,5 +41,5 @@
 		
 	mysql_query($q) or mysql_err($q);
 	
-	// Drop the old table and make a new results table
+	// We should return an error/sucess method here
 ?>

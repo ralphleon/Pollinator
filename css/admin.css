@@ -1,12 +1,15 @@
 
 /* Table view */
 #tableHolder {
-	overflow: scroll;
-	width:600px;
 }
 
 table.admin {
 	border-collapse: collapse;
+}
+
+table.admin thead th{
+	max-height:50px;
+	text-align:left;
 }
 
 table.admin thead tr {
